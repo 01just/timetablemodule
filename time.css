@@ -1,0 +1,79 @@
+
+td{
+	padding-left:30px;
+	padding-right:30px;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+.main{
+	width:70%;
+	padding:10px;
+	background:#FFC;
+	margin: auto;
+}
+.frame{
+	width:100%;
+	height:100%;
+}
+.frame_header{
+	top:0;
+	height:15%;
+	background:#0C6B71;
+}
+.timee{
+	background:#FFF;
+	color:black;
+	width:100%;
+	text-align:center;
+	
+}
+.dep{
+	display:grid;
+	width:100%;
+	background:#DCF;
+}
+.department{
+	float:right;
+	width:80%;
+	background:#BCE;
+	height:100%;
+	display:grid;
+
+}
+.date{
+	width:20%;
+	background:#FDE;
+	height:100%;
+	text-align:center;
+	display:inline-flex;
+}
+.bod{
+	background:#BFE;
+	height:75%;
+	bottom:0px;
+	top:0;
+}
+.frame_day{
+	background:#FCE;
+	width:20%;
+	height:100%;
+	display:inline-block;
+	text-align:center;
+}
+.frame_day h2{
+	padding-bottom:40px;
+	padding-top:20px;
+}
+.frame_main{
+	display:table-row;
+	float:right;
+	background:#DEC;
+	height:100%;
+	width:80%;
+}
+.frame_main div{
+	padding-bottom:20px;
+	padding-top:10px;
+	height:80px;
+	margin:5px;
+}
