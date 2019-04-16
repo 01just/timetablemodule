@@ -75,5 +75,24 @@ td{
 	padding-bottom:20px;
 	padding-top:10px;
 	height:80px;
+	width:100%;
 	margin:5px;
+	position:absolute;
+}
+.for_fri{
+	top:79%
+}
+.for_thur{
+	top:65%;
+}
+.for_wed{
+	top:50%;
+}
+.for_tue{
+	top:34%;
+
+}
+.for_mon{
+	top:20%;
+	
 }

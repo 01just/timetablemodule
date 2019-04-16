@@ -1,6 +1,12 @@
 <html>
 <head>
 	<link rel="stylesheet" href="time.css" type="text/css"  />
+	<!--TO DO
+		1.add date picker
+		2.add department picker
+		3.exam hall option
+		4.multiple exams on the same day
+		5.-->
 </head>
 <body>
 <?php
@@ -25,7 +31,7 @@ if($conn->connect_error){
 	<div class="frame">
 		<div class="frame_header">
 			<div class="date">
-				<h2>DATE</h2>
+				<h2>WEEK 1</h2>
 			</div>
 			
 			<div class="department">
@@ -57,17 +63,21 @@ if($conn->connect_error){
 		<div class="frame_main">
 			<?php while($row = mysqli_fetch_array($msg)){
 				$course = $row['Course'];
-				$st = explode(" ",date('D d M Y - h:i', $row['startTime']));
-				$ed = explode(" ",date('D d M Y - h:i', $row['endTime'])); 
-				$diff = abs((int)$ed[5]- (int)$st[5]) * 100;
+				$st = explode(" ",date('D d M Y - H:i', $row['startTime']));
+				$ed = explode(" ",date('D d M Y - H:i', $row['endTime'])); 
+				//if(strpos($st[5],'PM') && !strpos($st[5],'12')){ $st[5] =+ 12; echo $st[5];}
+				//if(strpos($ed[5],'PM') && !strpos($ed[5],'12')){ $ed[5] =+ 12;echo "ed".$ed[5];}
+				$diff = abs((float)str_replace(':','.',$ed[5])- (float)str_replace(':','.',$st[5])) * 150;
+				$start = ((((float)str_replace(':','.',$st[5]))-8) *125)+30;
+				//echo (float)str_replace(':','.',$st[5]);
 			?>
 			
 			<?php if($st[0]== 'Mon'){ ?>
 			<div class="for_mon">
 				<svg  height="55" width="100%">
-					<g>
-					<rect x = "30" width="<?php echo $diff; ?>" height="55" fill="#C0B6B6"/>
-			<text x="30" y="40" font-family="Verdana" font-size="40" fill="blue"><?php print $course; ?></text>
+					<g >
+					<rect x = "<?php echo $start; ?>" width="<?php echo $diff; ?>" height="55" fill="#C0B6B6"/>
+					<text x="<?php echo $start; ?>" y="40" font-family="Verdana" font-size="40" fill="blue"><?php print $course; ?></text>
 					</g>
 				</svg>
 			</div> <?php } ?>
@@ -75,8 +85,8 @@ if($conn->connect_error){
 			<div class="for_tue">
 				<svg  height="55" width="100%">
 					<g>
-					<rect x = "30" width="<?php echo $diff; ?>" height="55" fill="#C0B6B6"/>
-			<text x="30" y="40" font-family="Verdana" font-size="40" fill="blue"><?php print $course;  ?></text>
+					<rect x = "<?php echo $start; ?>" width="<?php echo $diff; ?>" height="55" fill="#C0B6B6"/>
+					<text x="<?php echo $start; ?>" y="40" font-family="Verdana" font-size="40" fill="blue"><?php print $course;  ?></text>
 					</g>
 				</svg>
 			</div> <?php } ?>
@@ -84,8 +94,8 @@ if($conn->connect_error){
 			<div class="for_wed">
 				<svg  height="55" width="100%">
 					<g>
-					<rect x = "30" width="<?php echo $diff; ?>" height="55" fill="#C0B6B6"/>
-			<text x="30" y="40" font-family="Verdana" font-size="40" fill="blue"><?php print $course; ?></text>
+					<rect x = "<?php echo $start; ?>" width="<?php echo $diff; ?>" height="55" fill="#C0B6B6"/>
+					<text x="<?php echo $start; ?>" y="40" font-family="Verdana" font-size="40" fill="blue"><?php print $course; ?></text>
 					</g>
 				</svg>
 			</div> <?php } ?>
@@ -93,8 +103,8 @@ if($conn->connect_error){
 			<div class="for_thur">
 				<svg  height="55" width="100%">
 					<g>
-					<rect x = "30" width="<?php echo $diff; ?>" height="55" fill="#C0B6B6"/>
-			<text x="30" y="40" font-family="Verdana" font-size="40" fill="blue"><?php print $course; ?></text>
+					<rect x = "<?php echo $start; ?>" width="<?php echo $diff; ?>" height="55" fill="#C0B6B6"/>
+					<text x="<?php echo $start; ?>" y="40" font-family="Verdana" font-size="40" fill="blue"><?php print $course; ?></text>
 					</g>
 				</svg>
 			</div> <?php } ?>
@@ -102,8 +112,8 @@ if($conn->connect_error){
 			<div class="for_fri">
 				<svg  height="55" width="100%">
 					<g>
-					<rect x = "30" width="<?php echo $diff; ?>" height="55" fill="#C0B6B6"/>
-			<text x="30" y="40" font-family="Verdana" font-size="40" fill="blue"><?php print $course;  ?></text>
+					<rect x = "<?php echo $start; ?>" width="<?php echo $diff; ?>" height="55" fill="#C0B6B6"/>
+			<text x="<?php echo $start; ?>" y="40" font-family="Verdana" font-size="40" fill="blue"><?php print $course;  ?></text>
 					</g>
 				</svg>
 			</div> <?php } }?>
